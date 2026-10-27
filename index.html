@@ -39,6 +39,11 @@ textarea{min-height:90px}
 .progress{height:8px;background:#dfd4c4;margin:12px 0}.progress div{height:8px;background:#a94735;width:0}
 footer{padding:24px 18px;color:#756a60;text-align:center;font-size:12px}
 @media(min-width:700px){header{padding:34px 32px}main{padding:24px}h1{font-size:47px}}
+
+.audioBox{margin:12px 0;padding:12px;background:#e9dfcf;border-left:3px solid #a94735}
+.audioBox button{margin:3px 5px 3px 0}
+.audioHint{font-size:12px;color:#6f6257;margin-top:6px}
+.audioStatus{font-size:13px;margin-top:5px}
 </style>
 </head>
 <body>
@@ -62,6 +67,8 @@ footer{padding:24px 18px;color:#756a60;text-align:center;font-size:12px}
 </div>
 <h3>Cách học hiệu quả</h3>
 <ol><li>Học 1 bài/ngày; đọc to tiếng Đức và tự đặt 3 câu.</li><li>Học danh từ luôn cùng mạo từ <b>der/die/das</b> và số nhiều khi có.</li><li>Ôn từ cũ sau 1 ngày, 3 ngày, rồi 1 tuần.</li><li>Làm đề thử sau khi hoàn thành 24 bài. A1 thật cần luyện nghe bằng âm thanh và nói với người khác nữa.</li></ol>
+<h3>Thử nghe tiếng Đức ngay</h3>
+<div class="card"><p>Nhập một câu tiếng Đức để nghe rồi đọc nhại theo. Âm thanh dùng chức năng đọc văn bản của trình duyệt, không cần tải file âm thanh riêng.</p><input type="text" id="customGerman" value="Guten Tag! Ich heiße Mai. Ich lerne Deutsch."/><div class="row" style="margin-top:8px"><button class="btn" onclick="playCustom(false)">▶ Nghe</button><button class="btn secondary" onclick="playCustom(true)">🐢 Nghe chậm</button><button class="btn secondary" onclick="stopGerman()">■ Dừng</button></div><div id="customStatus" class="audioStatus"></div><p class="audioHint">Lưu ý: giọng và khả năng phát âm phụ thuộc vào giọng ngôn ngữ được cài trên thiết bị/trình duyệt; iPad 2 có thể bị giới hạn.</p></div>
 <h3>Phát âm phải biết ngay từ đầu</h3>
 <table><tr><th>Chữ / tổ hợp</th><th>Gợi ý đọc</th><th>Ví dụ</th></tr>
 <tr><td>ä</td><td>gần âm “e”</td><td>Mädchen</td></tr><tr><td>ö</td><td>môi tròn, phát âm giữa “ơ/e”</td><td>schön</td></tr><tr><td>ü</td><td>môi tròn như “u”, lưỡi nói “i”</td><td>Tür</td></tr><tr><td>ei</td><td>“ai”</td><td>mein</td></tr><tr><td>ie</td><td>“i” dài</td><td>Liebe</td></tr><tr><td>eu / äu</td><td>gần “oi”</td><td>heute</td></tr><tr><td>sch</td><td>“sh”</td><td>Schule</td></tr><tr><td>z</td><td>“ts”</td><td>Zeit</td></tr><tr><td>w / v</td><td>w gần “v”; v thường gần “f” trong từ gốc Đức</td><td>Wasser / Vater</td></tr><tr><td>ch</td><td>âm xát; khác nhau trong ich và Bach</td><td>ich / machen</td></tr></table>
@@ -82,7 +89,7 @@ footer{padding:24px 18px;color:#756a60;text-align:center;font-size:12px}
 <section id="skills" class="panel">
 <h2>Luyện đủ 4 kỹ năng</h2><div class="intro">Một trang HTML không thể thay thế hoàn toàn âm thanh thật hay người đối thoại. Phần dưới đây cung cấp bài đọc, kịch bản nghe để nhờ thiết bị/người khác đọc, khung viết và nhiệm vụ nói.</div>
 <div class="card"><h3>1. Lesen — Đọc hiểu</h3><p><b>Đọc đoạn văn:</b> Hallo! Ich heiße Lina und bin 19 Jahre alt. Ich komme aus Vietnam, aber ich wohne jetzt in Berlin. Ich lerne Deutsch und arbeite am Samstag in einem Café. In meiner Freizeit höre ich Musik und treffe Freunde.</p><p><b>Câu hỏi:</b> Wie alt ist Lina? Wo wohnt sie? Was macht sie am Samstag? Was macht sie in ihrer Freizeit?</p><textarea id="readAnswer" placeholder="Viết câu trả lời bằng tiếng Việt hoặc tiếng Đức…"></textarea></div>
-<div class="card"><h3>2. Hören — Nghe hiểu</h3><p>Nhờ người khác đọc chậm đoạn sau hai lần, hoặc dùng tính năng đọc văn bản nếu thiết bị hỗ trợ. Che phần kịch bản khi nghe.</p><p><b>Nhiệm vụ:</b> Ghi lại tên, giờ hẹn và địa điểm.</p><button class="btn secondary" onclick="toggleScript()">Hiện / ẩn kịch bản nghe</button><div id="listenScript" style="display:none;padding:12px;background:#eee4d5;margin-top:10px">Guten Tag. Ich heiße Paul. Wir treffen uns am Freitag um halb sechs vor dem Bahnhof. Bitte bring dein Buch mit. Bis dann!</div><textarea id="listenAnswer" placeholder="Tên / ngày giờ / địa điểm…"></textarea></div>
+<div class="card"><h3>2. Hören — Nghe hiểu</h3><p>Nhờ người khác đọc chậm đoạn sau hai lần, hoặc dùng tính năng đọc văn bản nếu thiết bị hỗ trợ. Che phần kịch bản khi nghe.</p><p><b>Nhiệm vụ:</b> Ghi lại tên, giờ hẹn và địa điểm.</p><button class="btn" onclick="speakListening(false)">▶ Phát đoạn nghe</button><button class="btn secondary" onclick="speakListening(true)">🐢 Phát chậm</button><button class="btn secondary" onclick="stopGerman()">■ Dừng</button><br><button class="btn secondary" onclick="toggleScript()">Hiện / ẩn kịch bản nghe</button><div id="listenScript" style="display:none;padding:12px;background:#eee4d5;margin-top:10px">Guten Tag. Ich heiße Paul. Wir treffen uns am Freitag um halb sechs vor dem Bahnhof. Bitte bring dein Buch mit. Bis dann!</div><textarea id="listenAnswer" placeholder="Tên / ngày giờ / địa điểm…"></textarea></div>
 <div class="card"><h3>3. Schreiben — Viết</h3><p><b>Đề:</b> Viết tin nhắn 30–40 từ cho bạn: giới thiệu bản thân, mời bạn đi uống cà phê vào thứ Bảy, nêu giờ và hỏi bạn có thể đến không.</p><p class="small">Gợi ý: Hallo … / Ich heiße … / Hast du am Samstag Zeit? / Wir können … / Um … Uhr. / Liebe Grüße</p><textarea id="writingAnswer" placeholder="Viết tiếng Đức tại đây…"></textarea><div class="row"><button class="btn secondary" onclick="countWords()">Đếm từ</button><span id="writeCount" class="small"></span></div></div>
 <div class="card"><h3>4. Sprechen — Nói</h3><p>Tự nói thành tiếng, mỗi chủ đề 30–60 giây. Ghi âm bằng ứng dụng ghi âm nếu có.</p><ol><li>Stell dich vor. — Giới thiệu bản thân.</li><li>Was machst du gern? — Bạn thích làm gì?</li><li>Wie ist deine Wohnung? — Nhà bạn như thế nào?</li><li>Was möchtest du heute essen? — Hôm nay bạn muốn ăn gì?</li><li>Bitte um Hilfe. — Nhờ ai đó giúp đỡ.</li></ol><p><b>Khung tự giới thiệu:</b> Guten Tag. Ich heiße ___. Ich bin ___ Jahre alt. Ich komme aus ___. Ich wohne in ___. Ich spreche ___. Meine Hobbys sind ___.</p></div>
 </section>
@@ -159,7 +166,7 @@ function el(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 var completed={};try{completed=JSON.parse(localStorage.getItem("da_done")||"{}");}catch(e){}
 function updateProgress(){var n=0;for(var k in completed){if(completed[k])n++;}el("doneCount").innerHTML=n+"/24";el("progressBar").style.width=(n/24*100)+"%";}
-function renderLessons(){var out="";for(var x=0;x<lessons.length;x++){var L=lessons[x];out+='<details class="lesson"><summary><span>'+(""+(x+1)).replace(/^(\d)$/,"0$1")+'</span>'+esc(L.t)+' <small class="muted">· '+esc(L.g)+'</small></summary><div class="lessonbody"><p><b>Mục tiêu:</b> '+esc(L.goal)+'</p><h3>Từ vựng</h3>';for(var y=0;y<L.v.length;y++){out+='<div class="vocabrow"><span class="de">'+esc(L.v[y][0])+'</span><span>'+esc(L.v[y][1])+'</span><span class="small">Bài '+(x+1)+'</span></div>';}out+='<h3>Mẫu câu</h3><ul>';for(y=0;y<L.p.length;y++)out+='<li>'+esc(L.p[y])+'</li>';out+='</ul><div class="card"><b>Tự kiểm tra:</b><p>'+esc(L.q)+'</p><div>';for(y=0;y<L.a.length;y++)out+='<label style="display:block;padding:5px"><input type="radio" name="lq'+x+'" value="'+y+'"> '+esc(L.a[y])+'</label>';out+='</div><button class="btn secondary" onclick="checkLesson('+x+')">Kiểm tra</button> <span id="lf'+x+'" class="small"></span></div><p><label><input type="checkbox" '+(completed[x]?'checked':'')+' onchange="markLesson('+x+',this.checked)"> Đánh dấu đã học bài này</label></p></div></details>';}el("lessons").innerHTML=out;}
+function renderLessons(){var out="";for(var x=0;x<lessons.length;x++){var L=lessons[x];out+='<details class="lesson"><summary><span>'+(""+(x+1)).replace(/^(\d)$/,"0$1")+'</span>'+esc(L.t)+' <small class="muted">· '+esc(L.g)+'</small></summary><div class="lessonbody"><p><b>Mục tiêu:</b> '+esc(L.goal)+'</p><h3>Từ vựng</h3>';for(var y=0;y<L.v.length;y++){out+='<div class="vocabrow"><span class="de">'+esc(L.v[y][0])+'</span><span>'+esc(L.v[y][1])+'</span><span class="small">Bài '+(x+1)+'</span></div>';}out+='<h3>Mẫu câu</h3><ul>';for(y=0;y<L.p.length;y++)out+='<li>'+esc(L.p[y])+'</li>';out+='</ul><div class="audioBox"><b>Nghe và đọc nhại</b><p class="small">Âm thanh được tạo bằng giọng tiếng Đức có sẵn trong trình duyệt. Nếu máy không có giọng Đức, hãy thử trên thiết bị khác hoặc cài giọng Đức nếu hệ thống hỗ trợ.</p><button class="btn" onclick="speakGerman('+x+',false)">▶ Nghe bình thường</button><button class="btn secondary" onclick="speakGerman('+x+',true)">🐢 Nghe chậm</button><button class="btn secondary" onclick="stopGerman()">■ Dừng</button><div id="audioStatus'+x+'" class="audioStatus"></div></div><div class="card"><b>Tự kiểm tra:</b><p>'+esc(L.q)+'</p><div>';for(y=0;y<L.a.length;y++)out+='<label style="display:block;padding:5px"><input type="radio" name="lq'+x+'" value="'+y+'"> '+esc(L.a[y])+'</label>';out+='</div><button class="btn secondary" onclick="checkLesson('+x+')">Kiểm tra</button> <span id="lf'+x+'" class="small"></span></div><p><label><input type="checkbox" '+(completed[x]?'checked':'')+' onchange="markLesson('+x+',this.checked)"> Đánh dấu đã học bài này</label></p></div></details>';}el("lessons").innerHTML=out;}
 window.markLesson=function(x,v){completed[x]=v;try{localStorage.setItem("da_done",JSON.stringify(completed));}catch(e){}updateProgress();};
 window.checkLesson=function(x){var radios=document.getElementsByName("lq"+x),v=-1;for(var q=0;q<radios.length;q++)if(radios[q].checked)v=parseInt(radios[q].value,10);el("lf"+x).innerHTML=v===lessons[x].c?'<span class="good">Chính xác!</span>':v<0?'Chọn một đáp án trước.':'Chưa đúng, đọc lại mẫu câu nhé.';};
 function renderGrammar(){var o="";for(var x=0;x<grammar.length;x++)o+='<details class="lesson"><summary>'+esc(grammar[x][0])+'</summary><div class="lessonbody">'+esc(grammar[x][1])+'</div></details>';el("grammarList").innerHTML=o;}
@@ -176,6 +183,34 @@ function renderQuiz(){var qs=[
 function renderChecklist(){var items=["Tôi có thể giới thiệu bản thân và đánh vần tên.","Tôi hiểu số, giờ, ngày và giá đơn giản.","Tôi hỏi/đáp thông tin cá nhân.","Tôi dùng được sein, haben và động từ hiện tại.","Tôi phân biệt được der/die/das và ein/eine.","Tôi đặt câu hỏi W và câu hỏi có/không.","Tôi gọi món, mua sắm và hỏi đường đơn giản.","Tôi hiểu thông báo/tin nhắn ngắn quen thuộc.","Tôi viết được tin nhắn đơn giản 30–40 từ.","Tôi có thể nói chậm về bản thân và sở thích.","Tôi kể được vài việc đã làm bằng Perfekt cơ bản.","Tôi đã luyện nghe âm thanh tiếng Đức thật."];var o="";for(var i=0;i<items.length;i++)o+='<p><label><input type="checkbox" class="selfcheck"> '+esc(items[i])+'</label></p>';el("checklist").innerHTML=o;}
 function toggleTab(id){var ps=document.getElementsByClassName("panel");for(var i=0;i<ps.length;i++)ps[i].className="panel";el(id).className="panel active";var bs=el("nav").getElementsByTagName("button");for(i=0;i<bs.length;i++)bs[i].className=bs[i].getAttribute("data-tab")===id?"active":"";window.scrollTo(0,0);}
 var navbs=el("nav").getElementsByTagName("button");for(i=0;i<navbs.length;i++)navbs[i].onclick=function(){toggleTab(this.getAttribute("data-tab"));};
+window.playCustom=function(slow){window.speakTextGerman(el("customGerman").value,slow,"customStatus");};
+window.stopGerman=function(){try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}};
+window.speakTextGerman=function(text,slow,statusId){
+  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
+    if(statusId)el(statusId).innerHTML='Trình duyệt này không hỗ trợ đọc văn bản. Hãy mở bằng Safari/Chrome mới hơn hoặc dùng công cụ đọc văn bản của thiết bị.';
+    else alert('Trình duyệt này không hỗ trợ đọc văn bản.');
+    return;
+  }
+  try{
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='de-DE';u.rate=slow?0.68:0.88;u.pitch=1;
+    var voices=window.speechSynthesis.getVoices(),found=false;
+    for(var k=0;k<voices.length;k++){if(/^de(-|_)/i.test(voices[k].lang)){u.voice=voices[k];found=true;break;}}
+    if(statusId)el(statusId).innerHTML=found?'Đang phát bằng giọng Đức: '+esc(u.voice.name):'Đang thử giọng de-DE của trình duyệt. Nếu giọng không đúng tiếng Đức, máy có thể chưa có giọng Đức cài sẵn.';
+    u.onend=function(){if(statusId)el(statusId).innerHTML='Đã phát xong. Bấm nghe lại rồi đọc theo.';};
+    u.onerror=function(){if(statusId)el(statusId).innerHTML='Không phát được âm thanh trên trình duyệt này.';};
+    window.speechSynthesis.speak(u);
+  }catch(e){if(statusId)el(statusId).innerHTML='Không thể phát âm thanh trên thiết bị này.';}
+};
+window.speakGerman=function(index,slow){
+  var text=lessons[index].p.join('. ').replace(/—[^.]+/g,'');
+  window.speakTextGerman(text,slow,'audioStatus'+index);
+};
+window.speakListening=function(slow){
+  var text='Guten Tag. Ich heiße Paul. Wir treffen uns am Freitag um halb sechs vor dem Bahnhof. Bitte bring dein Buch mit. Bis dann!';
+  window.speakTextGerman(text,slow,null);
+};
 window.toggleScript=function(){var s=el("listenScript");s.style.display=s.style.display==="none"?"block":"none";};
 window.countWords=function(){var v=el("writingAnswer").value.replace(/^\s+|\s+$/g,"");var n=v?v.split(/\s+/).length:0;el("writeCount").innerHTML=n+" từ (mục tiêu 30–40).";};
 el("wordFilter").onchange=applyFilter;el("wordSearch").onkeyup=renderWordTable;
